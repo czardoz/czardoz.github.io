@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>More Kate - Aniket Panse</title>
+        <script>if (top !== self) top.location = self.location;</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="/static/style.css?v=2c529" />
+        <link rel="stylesheet" href="/static/pygments.css?v=c6adc" />
+        
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Aniket Panse" />
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/static/html5shiv.js?v=9a10c"></script>
+        <![endif]-->
+        
+        
+<link rel="canonical" href="/2013/more-kate.html" />
+
+
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Aniket Panse</a></h1>
+            <nav id="nav" role="navigation">
+                
+                <a href="/">Home</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            <div class="container"><div class="hentry">
+    <h1 class="entry-title">More Kate</h1>
+    <div class="entry-meta">
+        <time class="updated" datetime="2013-03-02T00:00:00+08:00" pubdate>
+            <a href="/2013/">2013-03-02</a>
+        </time>
+        <span class="author vcard">
+            by <span class="fn">czardoz</span>
+        </span>
+    </div>
+    <div class="entry-content">
+        <p>As I said before, I'm currently playing around with Kate. I must
+say I've learnt a lot in this week. I was able to compile my own
+little plugin, wrote it from scratch (referring to the helloworld
+code of course!). It doesn't do anything interesting right now,
+but I plan to make it do something cool.</p>
+<p>The idea is to listen on a TCP socket and insert whatever data I
+receive on that socket. I have no idea right now where this code
+should go. I can make a standalone server easily, but integrating
+that into the callback based model of a GUI system might be pretty
+tough. I am also reading up on C++, and plan to start with Telepathy
+next week. I should probably also mention what exactly I am doing
+when I debug Kate: (from within the build directory)</p>
+<div class="highlight"><pre><span class="gp">$</span> make
+<span class="gp">$</span> make install
+<span class="gp">$</span> ../run.sh kate 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep &lt;my-debug-prefix&gt;
+</pre></div>
+<p>The '2&gt;&amp;1' part means that the stderr is redirected to stdout.
+That's how I can grep :) I assumed that I won't have to run CMake
+everytime. Also, it's becoming really tedious, using vim and shell
+all the time. I will have another go at setting up the whole thing
+with QtCreator, I might even get to learn something in the process!</p>
+
+    </div>
+
+    
+
+    <div class="entry-tags">
+        <a href="/tag/#linux">linux</a><a href="/tag/#kde">kde</a><a href="/tag/#Qt">Qt</a>
+    </div>
+
+    
+</div></div>
+        </div>
+
+        <footer id="footer">
+            <hr class="end" />
+            
+            <p class="copyright" style="text-align: center">
+            Copyright 2015 <a href="/">Aniket Panse</a>
+            <br>
+            </p>
+        </footer>
+        <script type="text/javascript" src="/static/mobile.js?v=47a3e"></script>
+        
+    </body>
+</html>

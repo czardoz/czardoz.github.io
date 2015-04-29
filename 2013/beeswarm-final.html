@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Wrapping up: Beeswarm - Aniket Panse</title>
+        <script>if (top !== self) top.location = self.location;</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="/static/style.css?v=2c529" />
+        <link rel="stylesheet" href="/static/pygments.css?v=c6adc" />
+        
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Aniket Panse" />
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/static/html5shiv.js?v=9a10c"></script>
+        <![endif]-->
+        
+        
+<link rel="canonical" href="/2013/beeswarm-final.html" />
+
+
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Aniket Panse</a></h1>
+            <nav id="nav" role="navigation">
+                
+                <a href="/">Home</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            <div class="container"><div class="hentry">
+    <h1 class="entry-title">Wrapping up: Beeswarm</h1>
+    <div class="entry-meta">
+        <time class="updated" datetime="2013-10-01T00:00:00+08:00" pubdate>
+            <a href="/2013/">2013-10-01</a>
+        </time>
+        <span class="author vcard">
+            by <span class="fn">czardoz</span>
+        </span>
+    </div>
+    <div class="entry-content">
+        <p>So the coding period of GSoC 2013 is officially over, and I want to talk
+about how far Beeswarm has come in the last five months. I think the best
+way to explain my work is by introducing and explaining the Beeswarm terminology
+first.</p>
+<div class="section" id="what-exactly-is-beeswarm">
+<h2>What exactly is Beeswarm?</h2>
+<p>Simply put, Beeswarm is a special honeypot, with a system of automated
+clients, which use that honeypot. Information about attackers is gathered by
+analyzing the difference between the expected and actual traffic at the server
+end of the honeypot.</p>
+<p>In technical terms, Beeswarm is a <a class="reference external" href="http://en.wikipedia.org/wiki/Honeytoken">Honeytoken</a>
+project, that aims to use client side traffic as the Honeytoken. It consists of
+three major components:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>Hive</dt>
+<dd><p class="first last">The Hive is the actual Honeypot server. It runs on gevent and supports multiple
+protocols such as Telnet, SSH, SMTP, FTP, etc. It can also be used as a standalone
+Honeypot in the traditional way (without the other two components).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Feeder</dt>
+<dd><p class="first last">Essentially, the Feeder is the client part of Beeswarm. The job of the Feeder is
+to actively attract attackers to the Honeypot (Hive). It runs client sessions on
+the remote Hive server. These clients are &quot;semi-intelligent&quot;. By &quot;semi-intelligent&quot;,
+I mean that they have a rudimentary intelligence which allows them to login to the
+different Hive servers, and perform legitimate actions on them. For example, the FTP
+Feeder logs into the server (Hive), lists the files, and then either downloads or
+deletes them.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Beekeeper</dt>
+<dd><p class="first last">The Beekeeper is the Web based management interface for Beeswarm. It analyzies and
+classifies the client sessions that are made on the Hive. In fact, one of its most
+important tasks is to correlate the data from Hive and Feeder, and determine if a
+particular session was from a malicious attacker. Beekeeper allows easy deployment
+of Hives and Feeders by providing customized bootable ISOs for them.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>A simple use case, where one could detect MITM attacks:</p>
+<img alt="A simple use case for Beeswarm" class="align-center" src="/img/pic0.png" />
+<p>Through the course of the last five months, a lot of progress has been made in the
+following areas:</p>
+<ol class="arabic simple">
+<li>Interactivity of Hive capabilities</li>
+<li>The Beekeeper web-interface</li>
+<li>Intelligence of the automated Feeder clients</li>
+<li>Deployment</li>
+</ol>
+<p>I'll give a brief update on each of these areas, focusing on the new things, and
+places where creative ideas are used, which could also be beneficial outside of this
+particular project.</p>
+</div>
+<div class="section" id="interactivity-of-hive-protocols">
+<h2>Interactivity of Hive Protocols</h2>
+<p>This is the part of the project that I enjoyed working on the most. As mentioned
+in my previous posts, the Hive now has very interactive SSH and Telnet capabilities.
+It also boasts a fully functional SMTP server, that can capture emails being sent.
+The FTP capability too is largely functional, although it is probably not completely
+standards-compliant. It does, however, play along nicely with most FTP clients.
+The HTTP and HTTPs capabilities too, serve real pages from a directory. This means
+that it is quite possible to emulate devices like routers, which usually have a very
+simple web-ui.</p>
+</div>
+<div class="section" id="the-beekeeper-web-interface">
+<h2>The Beekeeper Web Interface</h2>
+<p>Beekeeper is the management and information processing part of Beeswarm. It is built
+on top of Flask, and Twitter Bootstrap. It allows administrators to view the current
+status, add new Hives/Feeders, and download bootable ISO files for them. Here are a
+few screenshots of the Beekeeper, in action:</p>
+<img alt="/img/pic1.png" class="align-center" src="/img/pic1.png" />
+<p>The next screenshot shows the webpage for configuring a new Hive instance. The various
+tabs allow one to customize the different protocols offered by the Hive instance.</p>
+<img alt="/img/pic2.png" class="align-center" src="/img/pic2.png" />
+<p>Apart from the management tasks, Beekeeper also does the job of classifying the sessions
+done on the Hive, and maintaining the database.</p>
+</div>
+<div class="section" id="intelligence-of-automated-feeder-clients">
+<h2>Intelligence of automated Feeder clients</h2>
+<p>I'll keep this section short, since this is already discussed in my previous blog posts.
+I think a small summary will be useful though:</p>
+<dl class="docutils">
+<dt>FTP</dt>
+<dd>The client lists the files, and randomly downloads a few of them. It also sends
+FTP commands such as SYST, in order more accurately emulate real clients.</dd>
+<dt>HTTP(s)</dt>
+<dd>The HTTP(s) clients extract the links from the root document (/index.html) and
+start visiting them. They stop after a randomly generated depth is reached.</dd>
+<dt>POP3(s)</dt>
+<dd>The POP3(s) clients retrieve the list of available emails, and then deletes them all,
+one by one. This is exactly what some mail clients do.</dd>
+<dt>SMTP</dt>
+<dd>The SMTP client chooses a few emails from the spam corpus that comes with Beeswarm,
+and sends a random number of them to the Hive SMTP capability.</dd>
+<dt>SSH/Telnet</dt>
+<dd>These are more complicated than the previous examples. They use a number of methods
+to act intelligently, as explained in my previous blog posts.</dd>
+</dl>
+</div>
+<div class="section" id="deployment">
+<h2>Deployment</h2>
+<p>The deployment of new Hives and Feeders has become much easier, since Beeswarm now has the
+ability to generate customized bootable ISO files for each of them. The ISOs are basically
+generated using <a class="reference external" href="http://live.debian.net/">Debian Live</a>. A very interesting approach was
+suggested by my mentor to reduce the time required for ISO generation. It goes something
+like this:</p>
+<ul class="simple">
+<li>Generate a &quot;Base&quot; ISO, which has a dummy tarball file embedded into it. This file is filled with a specific pattern (I chose a series of '0x07' bytes).</li>
+<li>Whenever a new custom ISO is required, find and overwrite the special pattern mentioned above, with an actual tar file.</li>
+<li>Use it inside the ISO after boot.</li>
+</ul>
+<p>This brought down the time for ISO generation from about 20 minutes to around 13 seconds.</p>
+<p>In order to view status easily on the bootable ISOs, I also added a Curses based UI to
+Beeswarm. It's a simple status screen, not a management interface, but it does feature a
+running log of current events:</p>
+<img alt="/img/pic3.png" class="align-center" src="/img/pic3.png" />
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>Working on Beeswarm was an amazing experience. If I had to make a list of new things that
+I learnt during this time, I'm pretty sure it would fill up a wall.</p>
+<p>I want to thank my mentor, Johnny Vestergaard, for this awesome learning experience. He
+pulled me out of a tight spot more often than I'd like to admit :-) . I also thank Lukas
+Rist, my backup mentor, for teaching me about Flask, Bootstrap, and web-frameworks in
+general. Without that excellent web-development session, I would probably still be trying
+to fix CSS and HTML on the Beekeeper Web-app. Thanks, The Honeynet Project, for accepting
+my GSoC application. Also, thanks to Google for paying me and giving me the opportunity to
+learn. These two things seldom occur simultaneously. Long live GSoC! :)</p>
+</div>
+
+    </div>
+
+    
+
+    <div class="entry-tags">
+        <a href="/tag/#beeswarm">beeswarm</a><a href="/tag/#gsoc">gsoc</a><a href="/tag/#honeypots">honeypots</a>
+    </div>
+
+    
+</div></div>
+        </div>
+
+        <footer id="footer">
+            <hr class="end" />
+            
+            <p class="copyright" style="text-align: center">
+            Copyright 2015 <a href="/">Aniket Panse</a>
+            <br>
+            </p>
+        </footer>
+        <script type="text/javascript" src="/static/mobile.js?v=47a3e"></script>
+        
+    </body>
+</html>

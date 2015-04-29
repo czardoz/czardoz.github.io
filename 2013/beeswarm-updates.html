@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Beeswarm Updates - Aniket Panse</title>
+        <script>if (top !== self) top.location = self.location;</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="/static/style.css?v=2c529" />
+        <link rel="stylesheet" href="/static/pygments.css?v=c6adc" />
+        
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Aniket Panse" />
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/static/html5shiv.js?v=9a10c"></script>
+        <![endif]-->
+        
+        
+<link rel="canonical" href="/2013/beeswarm-updates.html" />
+
+
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Aniket Panse</a></h1>
+            <nav id="nav" role="navigation">
+                
+                <a href="/">Home</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            <div class="container"><div class="hentry">
+    <h1 class="entry-title">Beeswarm Updates</h1>
+    <div class="entry-meta">
+        <time class="updated" datetime="2013-09-01T00:00:00+08:00" pubdate>
+            <a href="/2013/">2013-09-01</a>
+        </time>
+        <span class="author vcard">
+            by <span class="fn">czardoz</span>
+        </span>
+    </div>
+    <div class="entry-content">
+        <p>So Beeswarm has improved a lot over the last few weeks, and I have
+tried to summarize the changes here.</p>
+<div class="section" id="traffic-pattern">
+<h2>Traffic Pattern</h2>
+<p>In my last post, I had mentioned the Telnet and SSH Bees, which have much
+more intelligence now. Along with them, the FTP and SMTP bees have been
+updated too. The SMTP bee now uses a static mail archive (plans are to
+replace this with something more dynamic) to send emails from. The ftp
+client now checks what files are there on the Hive server before trying to
+download it.</p>
+<p>An important aspect of the traffic pattern was the ability to configure
+when sessions should occur. In other words, the timings between the client
+sessions should follow the real world patterns. Things were a bit complicated
+here, because every protocol had to be handled differently. Now every bee
+has a specific range of time (of the day) for which it is active. We also
+have a slepp interval, and an activation probability. The activation
+probability will decide whether the client session will be performed the
+next time the bee is activated.</p>
+</div>
+<div class="section" id="loads-of-bug-fixes-improvements">
+<h2>Loads of Bug Fixes/Improvements</h2>
+<p>A lot of minor bugs were fixed (or features implemented).</p>
+<ol class="arabic simple">
+<li>Generation of self-signed cert/keys at startup</li>
+<li>Fixing of the HTTPS capability, which resulted in &quot;ssl_rx_record_too_long&quot; errors.</li>
+<li>Fixed a bug in packaging where one of the data files was not being copied.</li>
+</ol>
+<p>All in all, getting things working is much more smoother now.</p>
+</div>
+<div class="section" id="iso-generation">
+<h2>ISO Generation</h2>
+<p>This is one of the most exciting thing I've worked on. Ever. Beeswarm now
+let's users download pre-configured, bootable ISO images of the new Hives/Feeders
+which are created from the web-interface. And it's as simple as clicking &quot;Download
+ISO&quot;. There were quite a bit of challenges here, but I'll save them for my next
+blog post ;)</p>
+</div>
+
+    </div>
+
+    
+
+    <div class="entry-tags">
+        <a href="/tag/#beeswarm">beeswarm</a><a href="/tag/#gsoc">gsoc</a><a href="/tag/#honeypots">honeypots</a>
+    </div>
+
+    
+</div></div>
+        </div>
+
+        <footer id="footer">
+            <hr class="end" />
+            
+            <p class="copyright" style="text-align: center">
+            Copyright 2015 <a href="/">Aniket Panse</a>
+            <br>
+            </p>
+        </footer>
+        <script type="text/javascript" src="/static/mobile.js?v=47a3e"></script>
+        
+    </body>
+</html>

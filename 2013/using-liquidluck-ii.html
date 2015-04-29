@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Using Liquidluck (Felix Felicis) - Part II - Aniket Panse</title>
+        <script>if (top !== self) top.location = self.location;</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="/static/style.css?v=2c529" />
+        <link rel="stylesheet" href="/static/pygments.css?v=c6adc" />
+        
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Aniket Panse" />
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/static/html5shiv.js?v=9a10c"></script>
+        <![endif]-->
+        
+        
+<link rel="canonical" href="/2013/using-liquidluck-ii.html" />
+
+
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Aniket Panse</a></h1>
+            <nav id="nav" role="navigation">
+                
+                <a href="/">Home</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            <div class="container"><div class="hentry">
+    <h1 class="entry-title">Using Liquidluck (Felix Felicis) - Part II</h1>
+    <div class="entry-meta">
+        <time class="updated" datetime="2013-05-23T00:00:00+08:00" pubdate>
+            <a href="/2013/">2013-05-23</a>
+        </time>
+        <span class="author vcard">
+            by <span class="fn">czardoz</span>
+        </span>
+    </div>
+    <div class="entry-content">
+        <p>This is a continuation of the <a class="reference external" href="/2013/using-liquidluck.html">Part-I</a>,
+of the Liquidluck tutorial. Upto this point, we have discussed the following:</p>
+<ul class="simple">
+<li>Installation</li>
+<li>Setting up the Website</li>
+<li>Writing Posts/Pages</li>
+</ul>
+<p>We shall now continue with themes, and also touch upon publishing the websites
+on GitHub.</p>
+<div class="section" id="themes">
+<h2>Themes</h2>
+<p>Now that you can write posts and pages, I guess you will want to tweak the overall
+look or 'feel' of your website. 'Luckily', Liquidluck has awesome support for the
+installation and search of new themes. Here's how you can search for new themes:</p>
+<div class="highlight"><pre><span class="gp">(felix_env)$</span> liquidluck search
+</pre></div>
+<p>It'll give you a nicely formatted output with the theme name and stuff. If you like
+the name of any of the themes, you can install it like this:</p>
+<div class="highlight"><pre><span class="gp">(felix_env)$</span> liquidluck install &lt;theme-name&gt;
+</pre></div>
+<p>Pretty easy, eh? It sure would be great to preview the themes though, if possible.
+So what you can do is, install all the themes in one go and try them out, one by one.
+I had some problems with installing a few of the themes from GitHub, so I wrote the
+following script to do it for me. Basically, it clones the theme repos into our <cite>_themes</cite>
+directory, so that they are immediately available to Liquidluck.</p>
+<div class="highlight"><pre>git clone git://github.com/lepture/liquidluck-theme-chiang.git ./_themes/chiang
+git clone git://github.com/lepture/liquidluck-theme-moment.git ./_themes/moment
+git clone git://github.com/bingdian/liquidluck-theme-responsive.git ./_themes/responsive
+git clone git://github.com/bcho/liquidluck-theme-cb3f20.git ./_themes/cb3f20
+git clone git://github.com/lianqin7/liquidluck-theme-icbu.git ./_themes/icbu
+git clone git://github.com/microjo/liquidluck-theme-lovelymod.git ./_themes/lovelymod
+git clone git://github.com/lepture/liquidluck-theme-bootstrap.git ./_themes/bootstrap
+git clone git://github.com/lepture/liquidluck-theme-octopress.git ./_themes/octopress
+git clone git://github.com/leandromouta/liquidluck-theme-thegrey.git ./_themes/thegrey
+git clone git://github.com/popomore/liquidluck-theme-reveal.git ./_themes/reveal
+</pre></div>
+<p>Note that you should run this script from the root of your website. That is, the parent
+of the <tt class="docutils literal">contents</tt> directory. You can customize/modify the themes easily, since they use
+the Jinja2 templating language. The <a class="reference external" href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates">templating part</a> of the Flask mega tutorial gives an
+awesome introduction to Jinja2 templates, so you might want to go through it.</p>
+</div>
+<div class="section" id="publishing-on-github">
+<h2>Publishing on GitHub</h2>
+<p>Now that you have (hopefully) decided on the theme, and are able to write new posts and
+create pages, you might want to publish your website. One of the easiest ways to do this,
+is on GitHub itself. In order to host your website on GitHub, you first need an account
+on GitHub. If you're already familiar with Git in general, then all you need to do is,
+create a new repo with the name <tt class="docutils literal"><span class="pre">&lt;username&gt;.github.io</span></tt>, and push the pages (in the deploy
+folder to this repo. They will automatically be served by GitHub, on the URL
+<tt class="docutils literal"><span class="pre">&lt;username&gt;.github.io</span></tt>. (Replace 'username' with your actual username!)</p>
+<p>If you're not familiar with it, create an account on GitHub. Once you've registered and
+your email address is verified, you can create new repos. In order to create a new repo,
+click on the New Repo button (right next to the settings button). In the 'repository name'
+field, enter <tt class="docutils literal"><span class="pre">&lt;username&gt;.github.io</span></tt> (Replace the username with your own!). Note this
+name, we're going to use it later.</p>
+<p>Now, on your local machine, create a new git repository in the <tt class="docutils literal">deploy</tt> directory.</p>
+<div class="highlight"><pre><span class="gp">(felix_env)$</span> <span class="nb">cd </span>deploy
+<span class="gp">(felix_env)$</span> git init .
+<span class="gp">(felix_env)$</span> git add .
+<span class="gp">(felix_env)$</span> git commit -m <span class="s2">&quot;initial commit&quot;</span>
+<span class="gp">(felix_env)$</span> git remote add origin https://github.com/czardoz/&lt;repo-name&gt;.git
+<span class="gp">(felix_env)$</span> git push -u origin master
+</pre></div>
+<p>Note that you must replace &lt;repo-name&gt; with the repository name that you have given.
+If you've done it all properly, you can now see your website hosted on <a class="reference external" href="https:/">https:/</a>/&lt;username&gt;.github.io!</p>
+</div>
+
+    </div>
+
+    
+
+    <div class="entry-tags">
+        <a href="/tag/#blog">blog</a><a href="/tag/#web">web</a><a href="/tag/#static-blog">static-blog</a><a href="/tag/#liquidluck">liquidluck</a>
+    </div>
+
+    
+</div></div>
+        </div>
+
+        <footer id="footer">
+            <hr class="end" />
+            
+            <p class="copyright" style="text-align: center">
+            Copyright 2015 <a href="/">Aniket Panse</a>
+            <br>
+            </p>
+        </footer>
+        <script type="text/javascript" src="/static/mobile.js?v=47a3e"></script>
+        
+    </body>
+</html>

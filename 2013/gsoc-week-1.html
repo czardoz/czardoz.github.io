@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Beeswarm - Week 1 - Aniket Panse</title>
+        <script>if (top !== self) top.location = self.location;</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="/static/style.css?v=2c529" />
+        <link rel="stylesheet" href="/static/pygments.css?v=c6adc" />
+        
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Aniket Panse" />
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/static/html5shiv.js?v=9a10c"></script>
+        <![endif]-->
+        
+        
+<link rel="canonical" href="/2013/gsoc-week-1.html" />
+
+
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Aniket Panse</a></h1>
+            <nav id="nav" role="navigation">
+                
+                <a href="/">Home</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            <div class="container"><div class="hentry">
+    <h1 class="entry-title">Beeswarm - Week 1</h1>
+    <div class="entry-meta">
+        <time class="updated" datetime="2013-06-25T00:00:00+08:00" pubdate>
+            <a href="/2013/">2013-06-25</a>
+        </time>
+        <span class="author vcard">
+            by <span class="fn">czardoz</span>
+        </span>
+    </div>
+    <div class="entry-content">
+        <p>As a part of GSoC 2013, I'm working on improving <a class="reference external" href="https://github.com/honeynet/beeswarm">BeeSwarm</a>.
+This is the first of my weekly updates (and probably the longest). It's been a pretty eventful
+first week of GSoC. A lot of code was written, knowledge gained and planning
+done! :) Here's a short summary:</p>
+<p>Improving the SSH and Telnet capabilities:</p>
+<ul class="simple">
+<li>The Hive now accepts logins and allows users to run a bunch of common commands (ls, cat, cd, uname, etc) on the SSH and Telnet capabilities.</li>
+<li>A lot of code was refactored, so that implementation of new commands is easier, and common to both the capabilities.</li>
+<li>Quite a few minor bug-fixes, and the Telnet Bee was improved, so that it handled the options negotiations in the right way.</li>
+</ul>
+<p>Improving the Web-App UI:</p>
+<ul class="simple">
+<li>The Beekeeper now boasts a new UI, built on Twitter Bootstrap.</li>
+<li>It is now possible (and necessary) to login to the web-app in order to perform
+administrative tasks and view the logs.</li>
+<li>The logs are displayed in a pretty table, and sorting and pagination is possible.</li>
+<li>BeeSwarm no longer depends upon Flask-Bootstrap.</li>
+</ul>
+<p>This week, I plan to secure the BeeKeeper API. The Hive and Feeder should refuse
+sending data in case an invalid certificate is detected. I have a feeling
+implementing this will be much harder than it sounds.. looking forward to a busy week!</p>
+
+    </div>
+
+    
+
+    <div class="entry-tags">
+        <a href="/tag/#beeswarm">beeswarm</a><a href="/tag/#gsoc">gsoc</a><a href="/tag/#honeypots">honeypots</a>
+    </div>
+
+    
+</div></div>
+        </div>
+
+        <footer id="footer">
+            <hr class="end" />
+            
+            <p class="copyright" style="text-align: center">
+            Copyright 2015 <a href="/">Aniket Panse</a>
+            <br>
+            </p>
+        </footer>
+        <script type="text/javascript" src="/static/mobile.js?v=47a3e"></script>
+        
+    </body>
+</html>
