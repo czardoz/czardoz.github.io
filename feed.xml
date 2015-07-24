@@ -3,14 +3,160 @@
     <title>Aniket Panse</title>
     <link href="http://aniketpanse.in/feed.xml" rel="self" />
     <link href="http://aniketpanse.in/" />
-    <updated>2015-07-22T07:36:39+08:00</updated>
+    <updated>2015-07-24T04:39:24+08:00</updated>
     <id>http://aniketpanse.in/</id>
     <entry>
+        <title type="html"><![CDATA[Deploying to GitHub from Travis-CI]]></title>
+        <author><name>Aniket</name></author>
+        <link href="http://aniketpanse.in/2015/autodeploy-github-travis.html"/>
+        <published>2015-07-23T00:00:00+08:00</published>
+        <updated>2015-07-24T04:39:24+08:00</updated>
+        <id>http://aniketpanse.in/2015/autodeploy-github-travis.html</id>
+        <category scheme="http://aniketpanse.in/tag/#travis-ci" term="travis-ci" label="travis-ci" />
+        <category scheme="http://aniketpanse.in/tag/#autodeploy" term="autodeploy" label="autodeploy" />
+        <category scheme="http://aniketpanse.in/tag/#static-website" term="static-website" label="static-website" />
+        <category scheme="http://aniketpanse.in/tag/#github-pages" term="github-pages" label="github-pages" />
+        <content type="html" xml:base="http://aniketpanse.in/" xml:lang="en">
+            <![CDATA[ <p>Small automations sometimes really help your workflow. That's the case with my blog too.
+I use a static blog generator to generate my blog, and GitHub pages to host the generated
+HTML. This is a problem, because I have to maintain two distinct repositories, one to
+host my blog content, <a class="reference external" href="https://github.com/czardoz/aniketpanse-in">aniketpanse-in</a> and one to host the blog itself, <a class="reference external" href="https://github.com/czardoz/czardoz.github.io">czardoz.github.io</a>.
+I have to make sure that both the repositories are always kept in sync.</p>
+<p>I used <a class="reference external" href="http://travis-ci.org/">Travis-CI</a> to automate this job for me. Every time I make
+changes to the <tt class="docutils literal">master</tt> branch of <a class="reference external" href="https://github.com/czardoz/aniketpanse-in">aniketpanse-in</a>, Travis builds the changes, and
+pushes them to <a class="reference external" href="https://github.com/czardoz/czardoz.github.io">czardoz.github.io</a> for me.</p>
+<p>Broadly, the whole process involves:</p>
+<ol class="lowerroman simple">
+<li>Creating an SSH Key, having a private and a public part</li>
+<li>Associating the public Key with the GitHub repository you want to push to.
+(called <cite>destinationRepo</cite> hereon)</li>
+<li>Using Travis to encrypt the private Key, and adding it to the content repository (called <cite>sourceRepo</cite> hereon).
+This is the repository from which content will be generated and pushed to the <cite>destinationRepo</cite>.</li>
+<li>Updating the &quot;.travis.yml&quot; file in the <cite>sourceRepo</cite> to decrypt the private key, and use it to push updates to the
+<cite>destinationRepo</cite> on GitHub.</li>
+</ol>
+<div class="section" id="create-an-ssh-key">
+<h2>1. Create an SSH Key</h2>
+<p>An SSH Key can be associated with a GitHub repository, and you can also allow write access
+to the Key. It basically means that you can push changes to the repository using that key.</p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>sourceRepo
+<span class="nv">$ </span>ssh-keygen -C <span class="s2">&quot;hi@example.com&quot;</span> -t rsa -b 4096
+Generating public/private rsa key pair.
+</pre></div>
+<p>You will be asked where you want the file to be saved,</p>
+<div class="highlight"><pre>Enter file in which to save the key <span class="o">(</span>/home/czardoz/.ssh/id_rsa<span class="o">)</span>: ./demo-secret-key
+</pre></div>
+<p>and for a passphrase for your new Key. Do use a nice unguessable passphrase here <a class="reference external" href="http://superuser.com/questions/261361/do-i-need-to-have-a-passphrase-for-my-ssh-rsa-key">Why?</a>.</p>
+<div class="highlight"><pre>Enter passphrase <span class="o">(</span>empty <span class="k">for</span> no passphrase<span class="o">)</span>:
+Enter same passphrase again:
+Your identification has been saved in ./demo-secret-key.
+Your public key has been saved in ./demo-secret-key.pub.
+The key fingerprint is:
+f8:8e:5f:42:77:b5:77:ca:3f:25:6d:65:f3:e3:83:2a hi@example.com
+The key<span class="err">&#39;</span>s randomart image is:
++--<span class="o">[</span> RSA 4096<span class="o">]</span>----+
+<span class="p">|</span>                 <span class="p">|</span>
+<span class="p">|</span>                 <span class="p">|</span>
+<span class="p">|</span>              .  <span class="p">|</span>
+<span class="p">|</span>       .     . oo<span class="p">|</span>
+<span class="p">|</span>      . S . . .o*<span class="p">|</span>
+<span class="p">|</span>       o . . ..+*<span class="p">|</span>
+<span class="p">|</span>        o .   <span class="o">=</span>oo<span class="p">|</span>
+<span class="p">|</span>       o E   . <span class="o">=</span> <span class="p">|</span>
+<span class="p">|</span>      ..o ...   +<span class="p">|</span>
++-----------------+
+</pre></div>
+<p>If you list the files in the directory right now, you should see two new files created,</p>
+<div class="highlight"><pre><span class="nv">$ </span>ls demo-secret-*
+demo-secret-key  demo-secret-key.pub
+</pre></div>
+</div>
+<div class="section" id="associate-public-key-with-your-destinationrepo">
+<h2>2. Associate Public Key with your <cite>destinationRepo</cite></h2>
+<p>On GitHub, go to the repository's settings for <cite>destinationRepo</cite>. You should see a &quot;Deploy Keys&quot; menu in the sidebar.
+Click on &quot;Add deploy key&quot;</p>
+<img alt="Adding a Deploy Key for a GitHub repository" class="align-center" src="/img/pic4.png" />
+<p>GitHub will ask for a title (put in something sensible, like &quot;Travis Deploy Key&quot;. In the &quot;Key&quot; field,
+paste the contents of the &quot;demo-secret-key.pub&quot; file. Check the box for &quot;Allow write access&quot;, since
+this Key will be used to push content to the repository.</p>
+</div>
+<div class="section" id="use-the-travis-cli-to-encrypt-the-private-key">
+<h2>3. Use the Travis CLI to encrypt the private key</h2>
+<p>If you have not already installed it, go ahead and install the <a class="reference external" href="https://github.com/travis-ci/travis.rb">Travis CLI</a>.</p>
+<div class="highlight"><pre><span class="nv">$ </span>gem install travis <span class="o">&amp;&amp;</span> travis login
+</pre></div>
+<p>After logging in to Travis, encrypt the private Key using the Travis CLI:</p>
+<div class="highlight"><pre><span class="nv">$ </span>travis encrypt-file demo-secret-key
+Detected repository as czardoz/autodeploy-demo-source, is this correct? <span class="se">\|</span>yes<span class="se">\|</span> yes
+encrypting demo-secret-key <span class="k">for</span> czardoz/autodeploy-demo-source
+storing result as demo-secret-key.enc
+storing secure env variables <span class="k">for</span> decryption
+
+Please add the following to your build script <span class="o">(</span>before_install stage in your .travis.yml, <span class="k">for</span> instance<span class="o">)</span>:
+
+    openssl aes-256-cbc -K <span class="nv">$encrypted_a0bda5fb43d5_key</span> -iv <span class="nv">$encrypted_a0bda5fb43d5_iv</span> -in demo-secret-key.enc -out demo-secret-key -d
+
+Pro Tip: You can add it automatically by running with --add.
+
+Make sure to add demo-secret-key.enc to the git repository.
+Make sure not to add demo-secret-key to the git repository.
+Commit all changes to your .travis.yml.
+</pre></div>
+<p>Travis has now encrypted your private key, and created encrypted environment variables for you, that'll
+allow you to decrypt your file at build time, on Travis-CI. Helpful as ever, it also told you what command you can use
+to decrypt your file.</p>
+<p>Now you just need to add the <em>encrypted</em> private key to your <cite>sourceRepo</cite>, and commit the change. Remove the public key.</p>
+<div class="highlight"><pre><span class="nv">$ </span>git add ./demo-secret-key.enc
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;Adding the encrypted private key to the repository&quot;</span>
+<span class="nv">$ </span>rm demo-secret-key demo-secret-key.enc
+</pre></div>
+</div>
+<div class="section" id="update-travis-configuration-to-deploy-to-destinationrepo">
+<h2>4. Update Travis Configuration to Deploy to <cite>destinationRepo</cite></h2>
+<p>In short, Travis has to:</p>
+<ol class="lowerroman simple">
+<li>Decrypt the encrypted key file</li>
+<li>Generate your static HTML</li>
+<li>Push the updated content to GitHub using the private Key</li>
+</ol>
+<div class="highlight"><pre><span class="l-Scalar-Plain">language</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">python</span>
+<span class="l-Scalar-Plain">python</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">2.7</span>
+<span class="l-Scalar-Plain">before_install</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">openssl aes-256-cbc -K $encrypted_a0bda5fb43d5_key -iv $encrypted_a0bda5fb43d5_iv -in demo-secret-key.enc -out demo-secret-key -d</span>
+<span class="l-Scalar-Plain">install</span><span class="p-Indicator">:</span>
+  <span class="c1"># Extract the commit message</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">export TRAVIS_COMMIT_MSG=&quot;$(git log --format=%B --no-merges -n 1)&quot;</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mkdir deploy</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git clone https://github.com/czardoz/destinationRepo.git deploy</span>
+<span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">make docs ./deploy</span> <span class="c1"># Run the script that generates your HTML</span>
+<span class="l-Scalar-Plain">after_success</span><span class="p-Indicator">:</span>
+  <span class="c1"># Add the ssh key</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">eval &quot;$(ssh-agent)&quot;</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">chmod 600 ./deploy.secret.key</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">ssh-add ./deploy.secret.key</span>
+
+  <span class="c1"># Commit and push the updated content to &quot;destinationRepo&quot;</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cd deploy</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git checkout -B master</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git add -A</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git commit --allow-empty -m &quot;$TRAVIS_COMMIT_MSG&quot;</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo &quot;Pushing changes&quot;</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git push git@github.com:czardoz/destinationRepo.git master</span>
+</pre></div>
+<p>Notice that in the last <tt class="docutils literal">git push</tt> command, we've used <cite>git&#64;github.com</cite> instead of pushing of HTTPS.
+This forces git to use the SSH Key that we have added.</p>
+<p>That's all there is to it.</p>
+</div>
+]]>
+        </content>
+    </entry><entry>
         <title type="html"><![CDATA[Wrapping up: Beeswarm]]></title>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm-final.html"/>
         <published>2013-10-01T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm-final.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -158,7 +304,7 @@ learn. These two things seldom occur simultaneously. Long live GSoC! :)</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm-updates.html"/>
         <published>2013-09-01T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm-updates.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -208,7 +354,7 @@ blog post ;)</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-4.html"/>
         <published>2013-07-29T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-4.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -271,7 +417,7 @@ work on all of them.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-3.html"/>
         <published>2013-07-21T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-3.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -352,7 +498,7 @@ become so long, I guess I'll have to split it anyway. Expect another long post t
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-2.html"/>
         <published>2013-07-05T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-2.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -373,7 +519,7 @@ which works with Gevent. I am currently considering <tt class="docutils literal"
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-1.html"/>
         <published>2013-06-25T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-1.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -407,7 +553,7 @@ implementing this will be much harder than it sounds.. looking forward to a busy
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/using-liquidluck-ii.html"/>
         <published>2013-06-01T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/using-liquidluck-ii.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
@@ -487,7 +633,7 @@ If you've done it all properly, you can now see your website hosted on <a class=
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/using-liquidluck.html"/>
         <published>2013-05-23T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/using-liquidluck.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
@@ -652,7 +798,7 @@ on GitHub. See you then!</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/moving-to-liquidluck.html"/>
         <published>2013-05-19T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/moving-to-liquidluck.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
@@ -699,7 +845,7 @@ However, the <a class="reference external" href="http://liquidluck.readthedocs.o
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm-update-http.html"/>
         <published>2013-03-15T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm-update-http.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#security" term="security" label="security" />
@@ -777,7 +923,7 @@ the server is sending 401-Unauthorized status code.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/kate-tcpserver-plugin.html"/>
         <published>2013-03-09T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/kate-tcpserver-plugin.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#kde" term="kde" label="kde" />
@@ -1056,7 +1202,7 @@ port where we want to listen (currently it is hardcoded to 3000).</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm.html"/>
         <published>2013-03-02T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#honeypots" term="honeypots" label="honeypots" />
@@ -1085,7 +1231,7 @@ Let's see how that comes about! :)</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/more-kate.html"/>
         <published>2013-03-02T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/more-kate.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#kde" term="kde" label="kde" />
@@ -1119,7 +1265,7 @@ with QtCreator, I might even get to learn something in the process!</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/experiments-with-kate.html"/>
         <published>2013-02-26T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/experiments-with-kate.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#kde" term="kde" label="kde" />
@@ -1148,7 +1294,7 @@ documentation too.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/dev-random.html"/>
         <published>2013-02-16T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/dev-random.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#random-number-generator" term="random-number-generator" label="random-number-generator" />
@@ -1180,7 +1326,7 @@ to be non-blocking by itself.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/hello-world.html"/>
         <published>2013-02-15T00:00:00+08:00</published>
-        <updated>2015-07-22T07:36:39+08:00</updated>
+        <updated>2015-07-24T04:39:24+08:00</updated>
         <id>http://aniketpanse.in/2013/hello-world.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
