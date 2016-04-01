@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>TCP Server Plugin for Kate - Aniket Panse</title>
         <script>if (top !== self) top.location = self.location;</script>
+        <meta name="description" content="I am Aniket, and you should see this." />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
         <link rel="stylesheet" href="/static/style.css?v=9f9f9" />
         <link rel="stylesheet" href="/static/pygments.css?v=c6adc" />
@@ -75,7 +76,7 @@ the following files:</p>
 </ul>
 <p>It's best to start with the '.desktop' file, since it contains the
 name of the plugin (as well as the author!) and other important information.</p>
-<div class="highlight"><pre>###
+<div class="highlight"><pre><span></span>###
 ##     Desktop Configuration File
 #
 
@@ -104,7 +105,7 @@ into the details. But I'll mention one point. The <cite>X-KDE-Library</cite> val
 absolutely has to be the name of the library that you're going to build.
 This library name is also used in CMakeLists.txt as we'll see. Here's the
 CMakeLists.txt file which we'll use:</p>
-<div class="highlight"><pre><span class="c">###</span>
+<div class="highlight"><pre><span></span><span class="c">###</span>
 <span class="c">##     CMakeLists.txt</span>
 <span class="c">#</span>
 
@@ -136,7 +137,7 @@ respectively).</p>
 <p>Now for the actual code! I'll start by explaining the header file,
 since it holds the class definitions. I'll ignore all the includes,
 and jump directly to the classes.</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">TCPServerPlugin</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TCPServerPlugin</span>
   <span class="o">:</span> <span class="k">public</span> <span class="n">KTextEditor</span><span class="o">::</span><span class="n">Plugin</span>
 <span class="p">{</span>
     <span class="k">public</span><span class="o">:</span>
@@ -160,7 +161,7 @@ and jump directly to the classes.</p>
 methods. Since our plugin has no configurable options, we ignore the
 other two methods (for now).</p>
 <p>Let's look at the TCPServerPluginView class, which is a bit more interesting ;-)</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">TCPServerPluginView</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TCPServerPluginView</span>
     <span class="o">:</span> <span class="k">public</span> <span class="n">QObject</span><span class="p">,</span> <span class="k">public</span> <span class="n">KXMLGUIClient</span>
 <span class="p">{</span>
     <span class="n">Q_OBJECT</span>
@@ -196,7 +197,7 @@ The slot* methods are explained next, along with the tcpserver.cpp file.</p>
 Their functions are well documented in the original tutorial, so I'll
 skip those, and the Constructor and Destructor for the TCPServerPlugin
 Class. These are the overridden methods:</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="n">TCPServerPlugin</span><span class="o">::</span><span class="n">addView</span><span class="p">(</span><span class="n">KTextEditor</span><span class="o">::</span><span class="n">View</span> <span class="o">*</span><span class="n">view</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TCPServerPlugin</span><span class="o">::</span><span class="n">addView</span><span class="p">(</span><span class="n">KTextEditor</span><span class="o">::</span><span class="n">View</span> <span class="o">*</span><span class="n">view</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">TCPServerPluginView</span> <span class="o">*</span><span class="n">nview</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TCPServerPluginView</span><span class="p">(</span><span class="n">view</span><span class="p">);</span>
     <span class="n">m_views</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">nview</span><span class="p">);</span>
@@ -224,7 +225,7 @@ TCPServerPluginView, we can have only one TCPServerPluginView, otherwise
 the multiple TCPServerPluginView will all try to listen on the same port
 (which is hardcoded for now) and cause a crash. Next is the TCPServerPluginView
 constructor:</p>
-<div class="highlight"><pre><span class="n">TCPServerPluginView</span><span class="o">::</span><span class="n">TCPServerPluginView</span><span class="p">(</span><span class="n">KTextEditor</span><span class="o">::</span><span class="n">View</span> <span class="o">*</span><span class="n">view</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">TCPServerPluginView</span><span class="o">::</span><span class="n">TCPServerPluginView</span><span class="p">(</span><span class="n">KTextEditor</span><span class="o">::</span><span class="n">View</span> <span class="o">*</span><span class="n">view</span><span class="p">)</span>
     <span class="o">:</span> <span class="n">QObject</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
     <span class="p">,</span> <span class="n">KXMLGUIClient</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
     <span class="p">,</span> <span class="n">m_view</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
@@ -258,7 +259,7 @@ a client connects to the server, slotHandleConnection() is called. I'm just
 going to skip the slotInsertText() method, because all it does is insert
 &quot;Awesome Server&quot; into the current document at the cursor position. With that,
 we come to the slotHandleConnection() method:</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="n">TCPServerPluginView</span><span class="o">::</span><span class="n">slotHandleConnection</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TCPServerPluginView</span><span class="o">::</span><span class="n">slotHandleConnection</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">clientSocket</span> <span class="o">=</span> <span class="n">srv</span><span class="o">-&gt;</span><span class="n">nextPendingConnection</span><span class="p">();</span>
     <span class="n">connect</span><span class="p">(</span><span class="n">clientSocket</span><span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span><span class="n">readyRead</span><span class="p">()),</span> <span class="k">this</span><span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span><span class="n">slotGetData</span><span class="p">()));</span>
@@ -272,7 +273,7 @@ so that whenever there's data at the socket which has not been read yet, the
 slotGetData() method's called. Also, on disconnect, we need to clear up the
 memory allocated to our clientSocket. The slotDisconnected() method is for
 debugging only, all it does is print a debug message.</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="n">TCPServerPluginView</span><span class="o">::</span><span class="n">slotGetData</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TCPServerPluginView</span><span class="o">::</span><span class="n">slotGetData</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">QByteArray</span> <span class="n">data</span><span class="p">;</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">clientSocket</span><span class="o">-&gt;</span><span class="n">readAll</span><span class="p">();</span>
@@ -291,7 +292,7 @@ insertText() method. Also, the cursor position, which is handled by
 KTextEditor::View object m_view is passed as the first argument, to specify
 where the text is to be inserted. Now let's have a look at the final piece of
 the puzzle, tcpserverui.rc:</p>
-<div class="highlight"><pre><span class="c">&lt;!-- tcpserverui.rc --&gt;</span>
+<div class="highlight"><pre><span></span><span class="c">&lt;!-- tcpserverui.rc --&gt;</span>
 <span class="cp">&lt;!DOCTYPE kpartgui&gt;</span>
 <span class="nt">&lt;kpartplugin</span> <span class="na">name=</span><span class="s">&quot;ktexteditor-tcpserver&quot;</span> <span class="na">library=</span><span class="s">&quot;ktexteditor-tcpserver&quot;</span> <span class="na">version=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;MenuBar&gt;</span>

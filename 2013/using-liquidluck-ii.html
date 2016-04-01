@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Using Liquidluck (Felix Felicis) - Part II - Aniket Panse</title>
         <script>if (top !== self) top.location = self.location;</script>
+        <meta name="description" content="I am Aniket, and you should see this." />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
         <link rel="stylesheet" href="/static/style.css?v=9f9f9" />
         <link rel="stylesheet" href="/static/pygments.css?v=c6adc" />
@@ -61,18 +62,18 @@ on GitHub.</p>
 <p>Now that you can write posts and pages, I guess you will want to tweak the overall
 look or 'feel' of your website. 'Luckily', Liquidluck has awesome support for the
 installation and search of new themes. Here's how you can search for new themes:</p>
-<div class="highlight"><pre><span class="gp">(felix_env)$</span> liquidluck search
+<div class="highlight"><pre><span></span><span class="gp">(felix_env)$</span> liquidluck search
 </pre></div>
 <p>It'll give you a nicely formatted output with the theme name and stuff. If you like
 the name of any of the themes, you can install it like this:</p>
-<div class="highlight"><pre><span class="gp">(felix_env)$</span> liquidluck install &lt;theme-name&gt;
+<div class="highlight"><pre><span></span><span class="gp">(felix_env)$</span> liquidluck install &lt;theme-name&gt;
 </pre></div>
 <p>Pretty easy, eh? It sure would be great to preview the themes though, if possible.
 So what you can do is, install all the themes in one go and try them out, one by one.
 I had some problems with installing a few of the themes from GitHub, so I wrote the
 following script to do it for me. Basically, it clones the theme repos into our <cite>_themes</cite>
 directory, so that they are immediately available to Liquidluck.</p>
-<div class="highlight"><pre>git clone git://github.com/lepture/liquidluck-theme-chiang.git ./_themes/chiang
+<div class="highlight"><pre><span></span>git clone git://github.com/lepture/liquidluck-theme-chiang.git ./_themes/chiang
 git clone git://github.com/lepture/liquidluck-theme-moment.git ./_themes/moment
 git clone git://github.com/bingdian/liquidluck-theme-responsive.git ./_themes/responsive
 git clone git://github.com/bcho/liquidluck-theme-cb3f20.git ./_themes/cb3f20
@@ -103,7 +104,7 @@ click on the New Repo button (right next to the settings button). In the 'reposi
 field, enter <tt class="docutils literal"><span class="pre">&lt;username&gt;.github.io</span></tt> (Replace the username with your own!). Note this
 name, we're going to use it later.</p>
 <p>Now, on your local machine, create a new git repository in the <tt class="docutils literal">deploy</tt> directory.</p>
-<div class="highlight"><pre><span class="gp">(felix_env)$</span> <span class="nb">cd </span>deploy
+<div class="highlight"><pre><span></span><span class="gp">(felix_env)$</span> <span class="nb">cd</span> deploy
 <span class="gp">(felix_env)$</span> git init .
 <span class="gp">(felix_env)$</span> git add .
 <span class="gp">(felix_env)$</span> git commit -m <span class="s2">&quot;initial commit&quot;</span>
