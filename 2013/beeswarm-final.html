@@ -61,35 +61,32 @@ end of the honeypot.</p>
 <p>In technical terms, Beeswarm is a <a class="reference external" href="http://en.wikipedia.org/wiki/Honeytoken">Honeytoken</a>
 project, that aims to use client side traffic as the Honeytoken. It consists of
 three major components:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>Hive</dt>
-<dd><p class="first last">The Hive is the actual Honeypot server. It runs on gevent and supports multiple
+<dd>The Hive is the actual Honeypot server. It runs on gevent and supports multiple
 protocols such as Telnet, SSH, SMTP, FTP, etc. It can also be used as a standalone
-Honeypot in the traditional way (without the other two components).</p>
-</dd>
+Honeypot in the traditional way (without the other two components).</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>Feeder</dt>
-<dd><p class="first last">Essentially, the Feeder is the client part of Beeswarm. The job of the Feeder is
+<dd>Essentially, the Feeder is the client part of Beeswarm. The job of the Feeder is
 to actively attract attackers to the Honeypot (Hive). It runs client sessions on
 the remote Hive server. These clients are &quot;semi-intelligent&quot;. By &quot;semi-intelligent&quot;,
 I mean that they have a rudimentary intelligence which allows them to login to the
 different Hive servers, and perform legitimate actions on them. For example, the FTP
 Feeder logs into the server (Hive), lists the files, and then either downloads or
-deletes them.</p>
-</dd>
+deletes them.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>Beekeeper</dt>
-<dd><p class="first last">The Beekeeper is the Web based management interface for Beeswarm. It analyzies and
+<dd>The Beekeeper is the Web based management interface for Beeswarm. It analyzies and
 classifies the client sessions that are made on the Hive. In fact, one of its most
 important tasks is to correlate the data from Hive and Feeder, and determine if a
 particular session was from a malicious attacker. Beekeeper allows easy deployment
-of Hives and Feeders by providing customized bootable ISOs for them.</p>
-</dd>
+of Hives and Feeders by providing customized bootable ISOs for them.</dd>
 </dl>
 </li>
 </ul>

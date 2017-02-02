@@ -3,14 +3,14 @@
     <title>Aniket Panse</title>
     <link href="http://aniketpanse.in/feed.xml" rel="self" />
     <link href="http://aniketpanse.in/" />
-    <updated>2016-04-01T18:57:48+08:00</updated>
+    <updated>2017-02-02T05:54:56+08:00</updated>
     <id>http://aniketpanse.in/</id>
     <entry>
         <title type="html"><![CDATA[Deploying to GitHub from Travis-CI]]></title>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2015/autodeploy-github-travis.html"/>
         <published>2015-07-23T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2015/autodeploy-github-travis.html</id>
         <category scheme="http://aniketpanse.in/tag/#travis-ci" term="travis-ci" label="travis-ci" />
         <category scheme="http://aniketpanse.in/tag/#autodeploy" term="autodeploy" label="autodeploy" />
@@ -40,7 +40,7 @@ This is the repository from which content will be generated and pushed to the <c
 <p>An SSH Key can be associated with a GitHub repository, and you can also allow write access
 to the Key. It basically means that you can push changes to the repository using that key.</p>
 <div class="highlight"><pre><span></span>$ <span class="nb">cd</span> sourceRepo
-$ ssh-keygen -C <span class="s2">&quot;hi@example.com&quot;</span> -t rsa -b 4096
+$ ssh-keygen -C <span class="s2">&quot;hi@example.com&quot;</span> -t rsa -b <span class="m">4096</span>
 Generating public/private rsa key pair.
 </pre></div>
 <p>You will be asked where you want the file to be saved,</p>
@@ -54,7 +54,7 @@ Your public key has been saved in ./demo-secret-key.pub.
 The key fingerprint is:
 f8:8e:5f:42:77:b5:77:ca:3f:25:6d:65:f3:e3:83:2a hi@example.com
 The key<span class="err">&#39;</span>s randomart image is:
-+--<span class="o">[</span> RSA 4096<span class="o">]</span>----+
++--<span class="o">[</span> RSA <span class="m">4096</span><span class="o">]</span>----+
 <span class="p">|</span>                 <span class="p">|</span>
 <span class="p">|</span>                 <span class="p">|</span>
 <span class="p">|</span>              .  <span class="p">|</span>
@@ -156,7 +156,7 @@ This forces git to use the SSH Key that we have added.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm-final.html"/>
         <published>2013-10-01T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm-final.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -175,35 +175,32 @@ end of the honeypot.</p>
 <p>In technical terms, Beeswarm is a <a class="reference external" href="http://en.wikipedia.org/wiki/Honeytoken">Honeytoken</a>
 project, that aims to use client side traffic as the Honeytoken. It consists of
 three major components:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>Hive</dt>
-<dd><p class="first last">The Hive is the actual Honeypot server. It runs on gevent and supports multiple
+<dd>The Hive is the actual Honeypot server. It runs on gevent and supports multiple
 protocols such as Telnet, SSH, SMTP, FTP, etc. It can also be used as a standalone
-Honeypot in the traditional way (without the other two components).</p>
-</dd>
+Honeypot in the traditional way (without the other two components).</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>Feeder</dt>
-<dd><p class="first last">Essentially, the Feeder is the client part of Beeswarm. The job of the Feeder is
+<dd>Essentially, the Feeder is the client part of Beeswarm. The job of the Feeder is
 to actively attract attackers to the Honeypot (Hive). It runs client sessions on
 the remote Hive server. These clients are &quot;semi-intelligent&quot;. By &quot;semi-intelligent&quot;,
 I mean that they have a rudimentary intelligence which allows them to login to the
 different Hive servers, and perform legitimate actions on them. For example, the FTP
 Feeder logs into the server (Hive), lists the files, and then either downloads or
-deletes them.</p>
-</dd>
+deletes them.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>Beekeeper</dt>
-<dd><p class="first last">The Beekeeper is the Web based management interface for Beeswarm. It analyzies and
+<dd>The Beekeeper is the Web based management interface for Beeswarm. It analyzies and
 classifies the client sessions that are made on the Hive. In fact, one of its most
 important tasks is to correlate the data from Hive and Feeder, and determine if a
 particular session was from a malicious attacker. Beekeeper allows easy deployment
-of Hives and Feeders by providing customized bootable ISOs for them.</p>
-</dd>
+of Hives and Feeders by providing customized bootable ISOs for them.</dd>
 </dl>
 </li>
 </ul>
@@ -304,7 +301,7 @@ learn. These two things seldom occur simultaneously. Long live GSoC! :)</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm-updates.html"/>
         <published>2013-09-01T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm-updates.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -354,7 +351,7 @@ blog post ;)</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-4.html"/>
         <published>2013-07-29T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-4.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -417,7 +414,7 @@ work on all of them.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-3.html"/>
         <published>2013-07-21T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-3.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -450,7 +447,7 @@ create a self-signed cert for the BeeKeeper. This created some difficulties. Sin
 than the previous version. Unfortunately, the pyOpenSSL wrapper doesn't yet support the
 functionality to convert between different PrivateKey formats. This means that the certificate
 has to be generated externally, before running the Beekeeper. It can be done this way:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> openssl genrsa -des3 -out beekeeper.key 2048
+<div class="highlight"><pre><span></span><span class="gp">$</span> openssl genrsa -des3 -out beekeeper.key <span class="m">2048</span>
 <span class="gp">$</span> openssl req -new -key beekeeper.key -out beekeeper.csr
 <span class="gp">$</span> openssl x509 -req -days <span class="m">3650</span> -in beekeeper.csr -signkey beekeeper.key -out beekeeper.crt
 <span class="gp">$</span> openssl rsa -in beekeeper.key -out beekeeper.key
@@ -498,7 +495,7 @@ become so long, I guess I'll have to split it anyway. Expect another long post t
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-2.html"/>
         <published>2013-07-05T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-2.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -519,7 +516,7 @@ which works with Gevent. I am currently considering <tt class="docutils literal"
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-1.html"/>
         <published>2013-06-25T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-1.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -553,7 +550,7 @@ implementing this will be much harder than it sounds.. looking forward to a busy
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/using-liquidluck-ii.html"/>
         <published>2013-06-01T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/using-liquidluck-ii.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
@@ -633,7 +630,7 @@ If you've done it all properly, you can now see your website hosted on <a class=
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/using-liquidluck.html"/>
         <published>2013-05-23T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/using-liquidluck.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
@@ -798,7 +795,7 @@ on GitHub. See you then!</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/moving-to-liquidluck.html"/>
         <published>2013-05-19T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/moving-to-liquidluck.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
@@ -845,7 +842,7 @@ However, the <a class="reference external" href="http://liquidluck.readthedocs.o
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm-update-http.html"/>
         <published>2013-03-15T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm-update-http.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#security" term="security" label="security" />
@@ -873,8 +870,8 @@ running (for the HTTP capability). Here's the code for the capability itself:</p
 
     <span class="sd">&quot;&quot;&quot;The HTTP Capability&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sessions</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">http</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">sessions</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sessions</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">http</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">sessions</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">=</span> <span class="n">options</span>
 
     <span class="k">def</span> <span class="nf">handle_session</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gsocket</span><span class="p">,</span> <span class="n">address</span><span class="p">):</span>
@@ -891,14 +888,14 @@ socket. Once this was figured out, it was pretty straightforward writing the
 BeeHTTPHandler class.</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BeeHTTPHandler</span><span class="p">(</span><span class="n">BaseHTTPRequestHandler</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">client_address</span><span class="p">,</span> <span class="n">server</span><span class="p">,</span> <span class="n">httpsession</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">client_address</span><span class="p">,</span> <span class="n">server</span><span class="p">,</span> <span class="n">httpsession</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">=</span> <span class="n">options</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;banner&#39;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_banner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;banner&#39;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_banner</span> <span class="o">=</span> <span class="s2">&quot;Microsoft-IIS/5.0&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_session</span> <span class="o">=</span> <span class="n">httpsession</span>
-        <span class="n">BaseHTTPRequestHandler</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">client_address</span><span class="p">,</span> <span class="n">server</span><span class="p">)</span>
+        <span class="n">BaseHTTPRequestHandler</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">client_address</span><span class="p">,</span> <span class="n">server</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">do_HEAD</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="o">...</span>
@@ -923,7 +920,7 @@ the server is sending 401-Unauthorized status code.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/kate-tcpserver-plugin.html"/>
         <published>2013-03-09T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/kate-tcpserver-plugin.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#kde" term="kde" label="kde" />
@@ -1202,7 +1199,7 @@ port where we want to listen (currently it is hardcoded to 3000).</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm.html"/>
         <published>2013-03-02T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#honeypots" term="honeypots" label="honeypots" />
@@ -1231,7 +1228,7 @@ Let's see how that comes about! :)</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/more-kate.html"/>
         <published>2013-03-02T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/more-kate.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#kde" term="kde" label="kde" />
@@ -1251,7 +1248,7 @@ next week. I should probably also mention what exactly I am doing
 when I debug Kate: (from within the build directory)</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> make
 <span class="gp">$</span> make install
-<span class="gp">$</span> ../run.sh kate 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep &lt;my-debug-prefix&gt;
+<span class="gp">$</span> ../run.sh kate <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep &lt;my-debug-prefix&gt;
 </pre></div>
 <p>The '2&gt;&amp;1' part means that the stderr is redirected to stdout.
 That's how I can grep :) I assumed that I won't have to run CMake
@@ -1265,7 +1262,7 @@ with QtCreator, I might even get to learn something in the process!</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/experiments-with-kate.html"/>
         <published>2013-02-26T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/experiments-with-kate.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#kde" term="kde" label="kde" />
@@ -1294,7 +1291,7 @@ documentation too.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/dev-random.html"/>
         <published>2013-02-16T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/dev-random.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#random-number-generator" term="random-number-generator" label="random-number-generator" />
@@ -1326,7 +1323,7 @@ to be non-blocking by itself.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/hello-world.html"/>
         <published>2013-02-15T00:00:00+08:00</published>
-        <updated>2016-04-01T18:57:48+08:00</updated>
+        <updated>2017-02-02T05:54:56+08:00</updated>
         <id>http://aniketpanse.in/2013/hello-world.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />

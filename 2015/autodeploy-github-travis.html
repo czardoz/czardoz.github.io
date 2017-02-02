@@ -71,7 +71,7 @@ This is the repository from which content will be generated and pushed to the <c
 <p>An SSH Key can be associated with a GitHub repository, and you can also allow write access
 to the Key. It basically means that you can push changes to the repository using that key.</p>
 <div class="highlight"><pre><span></span>$ <span class="nb">cd</span> sourceRepo
-$ ssh-keygen -C <span class="s2">&quot;hi@example.com&quot;</span> -t rsa -b 4096
+$ ssh-keygen -C <span class="s2">&quot;hi@example.com&quot;</span> -t rsa -b <span class="m">4096</span>
 Generating public/private rsa key pair.
 </pre></div>
 <p>You will be asked where you want the file to be saved,</p>
@@ -85,7 +85,7 @@ Your public key has been saved in ./demo-secret-key.pub.
 The key fingerprint is:
 f8:8e:5f:42:77:b5:77:ca:3f:25:6d:65:f3:e3:83:2a hi@example.com
 The key<span class="err">&#39;</span>s randomart image is:
-+--<span class="o">[</span> RSA 4096<span class="o">]</span>----+
++--<span class="o">[</span> RSA <span class="m">4096</span><span class="o">]</span>----+
 <span class="p">|</span>                 <span class="p">|</span>
 <span class="p">|</span>                 <span class="p">|</span>
 <span class="p">|</span>              .  <span class="p">|</span>

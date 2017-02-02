@@ -62,7 +62,7 @@ next week. I should probably also mention what exactly I am doing
 when I debug Kate: (from within the build directory)</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> make
 <span class="gp">$</span> make install
-<span class="gp">$</span> ../run.sh kate 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep &lt;my-debug-prefix&gt;
+<span class="gp">$</span> ../run.sh kate <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep &lt;my-debug-prefix&gt;
 </pre></div>
 <p>The '2&gt;&amp;1' part means that the stderr is redirected to stdout.
 That's how I can grep :) I assumed that I won't have to run CMake

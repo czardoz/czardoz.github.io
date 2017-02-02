@@ -75,7 +75,7 @@ create a self-signed cert for the BeeKeeper. This created some difficulties. Sin
 than the previous version. Unfortunately, the pyOpenSSL wrapper doesn't yet support the
 functionality to convert between different PrivateKey formats. This means that the certificate
 has to be generated externally, before running the Beekeeper. It can be done this way:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> openssl genrsa -des3 -out beekeeper.key 2048
+<div class="highlight"><pre><span></span><span class="gp">$</span> openssl genrsa -des3 -out beekeeper.key <span class="m">2048</span>
 <span class="gp">$</span> openssl req -new -key beekeeper.key -out beekeeper.csr
 <span class="gp">$</span> openssl x509 -req -days <span class="m">3650</span> -in beekeeper.csr -signkey beekeeper.key -out beekeeper.crt
 <span class="gp">$</span> openssl rsa -in beekeeper.key -out beekeeper.key
