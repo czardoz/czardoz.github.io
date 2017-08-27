@@ -3,14 +3,14 @@
     <title>Aniket Panse</title>
     <link href="http://aniketpanse.in/feed.xml" rel="self" />
     <link href="http://aniketpanse.in/" />
-    <updated>2017-03-18T17:12:14+08:00</updated>
+    <updated>2017-08-27T19:20:18+08:00</updated>
     <id>http://aniketpanse.in/</id>
     <entry>
         <title type="html"><![CDATA[Deploying to GitHub from Travis-CI]]></title>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2015/autodeploy-github-travis.html"/>
         <published>2015-07-23T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2015/autodeploy-github-travis.html</id>
         <category scheme="http://aniketpanse.in/tag/#travis-ci" term="travis-ci" label="travis-ci" />
         <category scheme="http://aniketpanse.in/tag/#autodeploy" term="autodeploy" label="autodeploy" />
@@ -156,7 +156,7 @@ This forces git to use the SSH Key that we have added.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm-final.html"/>
         <published>2013-10-01T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm-final.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -304,7 +304,7 @@ learn. These two things seldom occur simultaneously. Long live GSoC! :)</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm-updates.html"/>
         <published>2013-09-01T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm-updates.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -354,7 +354,7 @@ blog post ;)</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-4.html"/>
         <published>2013-07-29T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-4.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -417,7 +417,7 @@ work on all of them.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-3.html"/>
         <published>2013-07-21T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-3.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -498,7 +498,7 @@ become so long, I guess I'll have to split it anyway. Expect another long post t
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-2.html"/>
         <published>2013-07-05T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-2.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -519,7 +519,7 @@ which works with Gevent. I am currently considering <tt class="docutils literal"
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-1.html"/>
         <published>2013-06-25T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-1.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -553,7 +553,7 @@ implementing this will be much harder than it sounds.. looking forward to a busy
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/using-liquidluck-ii.html"/>
         <published>2013-06-01T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/using-liquidluck-ii.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
@@ -633,7 +633,7 @@ If you've done it all properly, you can now see your website hosted on <a class=
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/using-liquidluck.html"/>
         <published>2013-05-23T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/using-liquidluck.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
@@ -798,7 +798,7 @@ on GitHub. See you then!</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/moving-to-liquidluck.html"/>
         <published>2013-05-19T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/moving-to-liquidluck.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
@@ -845,7 +845,7 @@ However, the <a class="reference external" href="http://liquidluck.readthedocs.o
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm-update-http.html"/>
         <published>2013-03-15T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm-update-http.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#security" term="security" label="security" />
@@ -923,7 +923,7 @@ the server is sending 401-Unauthorized status code.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/kate-tcpserver-plugin.html"/>
         <published>2013-03-09T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/kate-tcpserver-plugin.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#kde" term="kde" label="kde" />
@@ -1202,7 +1202,7 @@ port where we want to listen (currently it is hardcoded to 3000).</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm.html"/>
         <published>2013-03-02T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#honeypots" term="honeypots" label="honeypots" />
@@ -1231,7 +1231,7 @@ Let's see how that comes about! :)</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/more-kate.html"/>
         <published>2013-03-02T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/more-kate.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#kde" term="kde" label="kde" />
@@ -1265,7 +1265,7 @@ with QtCreator, I might even get to learn something in the process!</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/experiments-with-kate.html"/>
         <published>2013-02-26T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/experiments-with-kate.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#kde" term="kde" label="kde" />
@@ -1294,7 +1294,7 @@ documentation too.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/dev-random.html"/>
         <published>2013-02-16T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/dev-random.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#random-number-generator" term="random-number-generator" label="random-number-generator" />
@@ -1326,7 +1326,7 @@ to be non-blocking by itself.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/hello-world.html"/>
         <published>2013-02-15T00:00:00+08:00</published>
-        <updated>2017-03-18T17:12:14+08:00</updated>
+        <updated>2017-08-27T19:20:18+08:00</updated>
         <id>http://aniketpanse.in/2013/hello-world.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
