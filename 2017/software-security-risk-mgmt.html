@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Software Security is Risk Management - Aniket Panse</title>
+        <script>if (top !== self) top.location = self.location;</script>
+        <meta name="description" content="I am Aniket, and you should see this." />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="/static/style.css?v=9f9f9" />
+        <link rel="stylesheet" href="/static/pygments.css?v=c6adc" />
+        
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Aniket Panse" />
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/static/html5shiv.js?v=9a10c"></script>
+        <![endif]-->
+        
+        <script src="//static.getclicky.com/js" type="text/javascript"></script>
+            <script type="text/javascript">try{ clicky.init(100883275); }catch(e){}</script>
+            <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100883275ns.gif" /></p></noscript>
+        
+<link rel="canonical" href="/2017/software-security-risk-mgmt.html" />
+
+
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Aniket Panse</a></h1>
+            <nav id="nav" role="navigation">
+                
+                <a href="/">Home</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </header>
+        
+    <div class="post-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.25)), url(/img/bgs/security.png);"></div>
+
+
+        <div id="main">
+            <div class="container"><div class="hentry">
+    <h1 class="entry-title">Software Security is Risk Management</h1>
+    <div class="entry-meta">
+        <time class="updated" datetime="2017-08-30T00:00:00+08:00" pubdate>
+            <a href="/2017/">2017-08-30</a>
+        </time>
+        <span class="author vcard">
+            by <span class="fn">Aniket</span>
+        </span>
+    </div>
+    <div class="entry-content">
+        <p>We should accept the fact that software can <em>never</em> be perfect.
+Just like any machine cannot ever be built to perfection, software
+cannot be built to perfection either. There are attempts to do this,
+such as <a class="reference external" href="https://en.wikipedia.org/wiki/Formal_verification">Formal Verification</a>,
+but they're not practically deployable at this point. Moreover, they're
+usually tailored towards specific use cases, so the entire process would
+need to be repeated for every bug fix and feature addition. So it's
+tremendously hard (impossible) to formally verify large codebases such
+as Chromium, or the Linux kernel.</p>
+<p>Turns out, guaranteeing software security is prohibitively costly. For now.
+It is however, possible to provide a reasonable level of security by applying
+traditional techniques of risk management. Before discussing the techniques
+though, it's important to understand <em>what is the uncertainty here?</em>. Without
+understanding the <strong>uncertainty</strong> in software engineering, we cannot quantify
+the risks.</p>
+<div class="section" id="uncertainty">
+<h2>Uncertainty</h2>
+<p>In Software Engineering, uncertainty can arise out of any of the following
+sources (in the order in which they appear in the <a class="reference external" href="https://en.wikipedia.org/wiki/Systems_development_life_cycle">SDLC</a>):</p>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Gathering of requirements</dt>
+<dd><p class="first last">This is the source of a large amount of uncertainty in many projects. Sometimes,
+requirements are not gathered fully. Or they're wrong (or both!). Other times,
+software meant for a different objective is repurposed for a totally different
+use-case.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Architecture</dt>
+<dd><p class="first last">Architectural flaws in software are extremely dangerous, because they invariably
+tend to be complex and hard to fix. In many cases, the only option is to start
+from scratch, which is extremely costly.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Implementation bugs</dt>
+<dd><p class="first last">As software is created by humans, it's always possible to have flaws during the
+software writing phase.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Change</dt>
+<dd><p class="first last">Many times, new requirements come up, the market changes, or one of the software
+dependencies performs a breaking change. This can create uncertainty in any system.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="assessing-the-risk">
+<h2>Assessing the Risk</h2>
+<p>Once you identify as many sources of uncertainty as possible, you can proceed to
+<a class="reference external" href="https://www.isaca.org/journal/archives/2010/volume-1/pages/performing-a-security-risk-assessment1.aspx">assess the risk</a>.
+Going a step further, it might also help to identify sources of uncertainty which
+cause a large amount of risk. For example, not having a unit test suite of the software
+system causes a huge uncertainty, but if done from the beginning, is not very costly.
+Same goes for requirements gathering. If done well at the beginning, it minimizes change,
+and reduces the uncertainty (and therefore the risk).</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>It's important to understand that real-world software is built with a number of contraints,
+so it's better to accept their limitations in terms of security. Instead, the right
+approach is to embrace the uncertainty, and try to minimize it.</p>
+</div>
+
+    </div>
+
+    
+
+    <div class="entry-tags">
+        <a href="/tag/#software">software</a><a href="/tag/#engineering">engineering</a><a href="/tag/#security">security</a>
+    </div>
+
+    
+</div></div>
+        </div>
+
+        <footer id="footer">
+            <hr class="end" />
+            
+            <p class="copyright" style="text-align: center">
+            Copyright 2015 <a href="/">Aniket Panse</a>
+            <br>
+            </p>
+        </footer>
+        <script type="text/javascript" src="/static/mobile.js?v=47a3e"></script>
+        
+    </body>
+</html>

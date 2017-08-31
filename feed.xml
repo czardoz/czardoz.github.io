@@ -3,14 +3,96 @@
     <title>Aniket Panse</title>
     <link href="http://aniketpanse.in/feed.xml" rel="self" />
     <link href="http://aniketpanse.in/" />
-    <updated>2017-08-27T19:20:18+08:00</updated>
+    <updated>2017-08-31T02:34:08+08:00</updated>
     <id>http://aniketpanse.in/</id>
     <entry>
+        <title type="html"><![CDATA[Software Security is Risk Management]]></title>
+        <author><name>Aniket</name></author>
+        <link href="http://aniketpanse.in/2017/software-security-risk-mgmt.html"/>
+        <published>2017-08-30T00:00:00+08:00</published>
+        <updated>2017-08-31T02:34:08+08:00</updated>
+        <id>http://aniketpanse.in/2017/software-security-risk-mgmt.html</id>
+        <category scheme="http://aniketpanse.in/tag/#software" term="software" label="software" />
+        <category scheme="http://aniketpanse.in/tag/#engineering" term="engineering" label="engineering" />
+        <category scheme="http://aniketpanse.in/tag/#security" term="security" label="security" />
+        <content type="html" xml:base="http://aniketpanse.in/" xml:lang="en">
+            <![CDATA[ <p>We should accept the fact that software can <em>never</em> be perfect.
+Just like any machine cannot ever be built to perfection, software
+cannot be built to perfection either. There are attempts to do this,
+such as <a class="reference external" href="https://en.wikipedia.org/wiki/Formal_verification">Formal Verification</a>,
+but they're not practically deployable at this point. Moreover, they're
+usually tailored towards specific use cases, so the entire process would
+need to be repeated for every bug fix and feature addition. So it's
+tremendously hard (impossible) to formally verify large codebases such
+as Chromium, or the Linux kernel.</p>
+<p>Turns out, guaranteeing software security is prohibitively costly. For now.
+It is however, possible to provide a reasonable level of security by applying
+traditional techniques of risk management. Before discussing the techniques
+though, it's important to understand <em>what is the uncertainty here?</em>. Without
+understanding the <strong>uncertainty</strong> in software engineering, we cannot quantify
+the risks.</p>
+<div class="section" id="uncertainty">
+<h2>Uncertainty</h2>
+<p>In Software Engineering, uncertainty can arise out of any of the following
+sources (in the order in which they appear in the <a class="reference external" href="https://en.wikipedia.org/wiki/Systems_development_life_cycle">SDLC</a>):</p>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Gathering of requirements</dt>
+<dd><p class="first last">This is the source of a large amount of uncertainty in many projects. Sometimes,
+requirements are not gathered fully. Or they're wrong (or both!). Other times,
+software meant for a different objective is repurposed for a totally different
+use-case.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Architecture</dt>
+<dd><p class="first last">Architectural flaws in software are extremely dangerous, because they invariably
+tend to be complex and hard to fix. In many cases, the only option is to start
+from scratch, which is extremely costly.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Implementation bugs</dt>
+<dd><p class="first last">As software is created by humans, it's always possible to have flaws during the
+software writing phase.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Change</dt>
+<dd><p class="first last">Many times, new requirements come up, the market changes, or one of the software
+dependencies performs a breaking change. This can create uncertainty in any system.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="assessing-the-risk">
+<h2>Assessing the Risk</h2>
+<p>Once you identify as many sources of uncertainty as possible, you can proceed to
+<a class="reference external" href="https://www.isaca.org/journal/archives/2010/volume-1/pages/performing-a-security-risk-assessment1.aspx">assess the risk</a>.
+Going a step further, it might also help to identify sources of uncertainty which
+cause a large amount of risk. For example, not having a unit test suite of the software
+system causes a huge uncertainty, but if done from the beginning, is not very costly.
+Same goes for requirements gathering. If done well at the beginning, it minimizes change,
+and reduces the uncertainty (and therefore the risk).</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>It's important to understand that real-world software is built with a number of contraints,
+so it's better to accept their limitations in terms of security. Instead, the right
+approach is to embrace the uncertainty, and try to minimize it.</p>
+</div>
+]]>
+        </content>
+    </entry><entry>
         <title type="html"><![CDATA[Deploying to GitHub from Travis-CI]]></title>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2015/autodeploy-github-travis.html"/>
         <published>2015-07-23T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2015/autodeploy-github-travis.html</id>
         <category scheme="http://aniketpanse.in/tag/#travis-ci" term="travis-ci" label="travis-ci" />
         <category scheme="http://aniketpanse.in/tag/#autodeploy" term="autodeploy" label="autodeploy" />
@@ -156,7 +238,7 @@ This forces git to use the SSH Key that we have added.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm-final.html"/>
         <published>2013-10-01T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm-final.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -304,7 +386,7 @@ learn. These two things seldom occur simultaneously. Long live GSoC! :)</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm-updates.html"/>
         <published>2013-09-01T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm-updates.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -354,7 +436,7 @@ blog post ;)</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-4.html"/>
         <published>2013-07-29T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-4.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -417,7 +499,7 @@ work on all of them.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-3.html"/>
         <published>2013-07-21T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-3.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -498,7 +580,7 @@ become so long, I guess I'll have to split it anyway. Expect another long post t
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-2.html"/>
         <published>2013-07-05T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-2.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -519,7 +601,7 @@ which works with Gevent. I am currently considering <tt class="docutils literal"
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/gsoc-week-1.html"/>
         <published>2013-06-25T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/gsoc-week-1.html</id>
         <category scheme="http://aniketpanse.in/tag/#beeswarm" term="beeswarm" label="beeswarm" />
         <category scheme="http://aniketpanse.in/tag/#gsoc" term="gsoc" label="gsoc" />
@@ -553,7 +635,7 @@ implementing this will be much harder than it sounds.. looking forward to a busy
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/using-liquidluck-ii.html"/>
         <published>2013-06-01T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/using-liquidluck-ii.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
@@ -633,7 +715,7 @@ If you've done it all properly, you can now see your website hosted on <a class=
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/using-liquidluck.html"/>
         <published>2013-05-23T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/using-liquidluck.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
@@ -798,7 +880,7 @@ on GitHub. See you then!</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/moving-to-liquidluck.html"/>
         <published>2013-05-19T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/moving-to-liquidluck.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
@@ -845,7 +927,7 @@ However, the <a class="reference external" href="http://liquidluck.readthedocs.o
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm-update-http.html"/>
         <published>2013-03-15T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm-update-http.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#security" term="security" label="security" />
@@ -923,7 +1005,7 @@ the server is sending 401-Unauthorized status code.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/kate-tcpserver-plugin.html"/>
         <published>2013-03-09T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/kate-tcpserver-plugin.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#kde" term="kde" label="kde" />
@@ -1202,7 +1284,7 @@ port where we want to listen (currently it is hardcoded to 3000).</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/beeswarm.html"/>
         <published>2013-03-02T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/beeswarm.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#honeypots" term="honeypots" label="honeypots" />
@@ -1231,7 +1313,7 @@ Let's see how that comes about! :)</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/more-kate.html"/>
         <published>2013-03-02T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/more-kate.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#kde" term="kde" label="kde" />
@@ -1265,7 +1347,7 @@ with QtCreator, I might even get to learn something in the process!</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/experiments-with-kate.html"/>
         <published>2013-02-26T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/experiments-with-kate.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#kde" term="kde" label="kde" />
@@ -1294,7 +1376,7 @@ documentation too.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/dev-random.html"/>
         <published>2013-02-16T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/dev-random.html</id>
         <category scheme="http://aniketpanse.in/tag/#linux" term="linux" label="linux" />
         <category scheme="http://aniketpanse.in/tag/#random-number-generator" term="random-number-generator" label="random-number-generator" />
@@ -1326,7 +1408,7 @@ to be non-blocking by itself.</p>
         <author><name>Aniket</name></author>
         <link href="http://aniketpanse.in/2013/hello-world.html"/>
         <published>2013-02-15T00:00:00+08:00</published>
-        <updated>2017-08-27T19:20:18+08:00</updated>
+        <updated>2017-08-31T02:34:08+08:00</updated>
         <id>http://aniketpanse.in/2013/hello-world.html</id>
         <category scheme="http://aniketpanse.in/tag/#blog" term="blog" label="blog" />
         <category scheme="http://aniketpanse.in/tag/#web" term="web" label="web" />
